@@ -34,7 +34,7 @@ export class UsersService {
       console.log('Service');
       console.log(username);
       // const user = this.usersResporitory.findOneOrFail(username);
-      const user = this.users.find(user => username === user.username)
+      const user = this.users.find((user) => username === user.username);
       return user;
     } catch (err) {
       throw err;
