@@ -31,8 +31,6 @@ export class UsersService {
 
   async findByUsername(username: string): Promise<User> {
     try {
-      console.log('Service');
-      console.log(username);
       // const user = this.usersResporitory.findOneOrFail(username);
       const user = this.users.find((user) => username === user.username);
       return user;

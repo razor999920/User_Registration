@@ -8,7 +8,6 @@ import {
   ParseIntPipe,
   Post,
   Put,
-  Query,
 } from '@nestjs/common';
 import {
   ApiBadRequestResponse,
@@ -44,18 +43,6 @@ export class UsersController {
 
     return user;
   }
-
-  // @ApiOkResponse({ type: User })
-  // @Get('FindByUsername')
-  // getUserByUsername(@Query() query): Promise<User> {
-  //   const user = this.usersService.findByUsername(query);
-
-  //   if (!user) {
-  //     throw new NotFoundException();
-  //   }
-
-  //   return user;
-  // }
 
   @ApiCreatedResponse({ type: User })
   @ApiBadRequestResponse()

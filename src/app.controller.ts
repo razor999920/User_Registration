@@ -9,8 +9,7 @@ export class AppController {
   @UseGuards(LocalAuthGuard)
   @Post('login')
   login(@Request() req): any {
-    console.log('Terst');
-    console.log(req);
+    console.log(req.body);
     return req.body;
   }
 
