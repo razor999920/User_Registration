@@ -8,8 +8,8 @@ import { User } from './entities/user.entity';
 export class UsersService {
   private users: User[] = [
     { id: 0, name: 'Raza', username: 'razor', password: 'test123' },
-    { id: 1, name: 'Indeep', username: 'razor', password: 'test123' },
-    { id: 2, name: 'Marc', username: 'razor', password: 'test123' },
+    { id: 1, name: 'Indeep', username: 'indeep99', password: 'test123' },
+    { id: 2, name: 'Marc', username: 'marc99', password: 'test123' },
   ];
 
   constructor(
@@ -29,10 +29,10 @@ export class UsersService {
     }
   }
 
-  async findByUsername(username: string): Promise<User> {
+  async findByUsername(username: string): Promise<any> {
     try {
-      // const user = this.usersResporitory.findOneOrFail(username);
-      const user = this.users.find((user) => username === user.username);
+      // const user = this.users.find((user) => username === user.username);
+      const user = this.usersResporitory.findOne(username);
       return user;
     } catch (err) {
       throw err;

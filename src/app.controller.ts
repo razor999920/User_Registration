@@ -1,20 +1,22 @@
 import { Controller, Get, Post, Request, UseGuards } from '@nestjs/common';
 import { AppService } from './app.service';
+import { AuthService } from './auth/auth.service';
+import { JwtAuthGuard } from './auth/jwt-auth.guard';
 import { LocalAuthGuard } from './auth/local-auth.guard';
 
 @Controller('app')
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly authService: AuthService) {}
 
   @UseGuards(LocalAuthGuard)
   @Post('login')
   login(@Request() req): any {
-    console.log(req.body);
-    return req.body;
+    return this.authService.login(req.user); // return JWT access token
   }
 
-  @Get('hello')
-  getHello(): string {
-    return this.appService.getHello();
+  @UseGuards(JwtAuthGuard)
+  @Get('protected')
+  getHello(@Request() req): string {
+    return req.user; // require an bearer token, validation token
   }
 }
